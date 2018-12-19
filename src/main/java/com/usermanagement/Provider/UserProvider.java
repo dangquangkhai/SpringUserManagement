@@ -44,6 +44,7 @@ public class UserProvider {
 	}
 
 	public User getUserByEmail(String Email) {
+		System.out.println("Email = "+Email);
 		try {
 			return userRepository.getUserByEmail(Email);
 		} catch (Exception e) {

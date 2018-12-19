@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.usermanagement.Lib.SessionHelper;
 import com.usermanagement.Model.User;
 import com.usermanagement.Provider.UserProvider;
 
@@ -92,5 +93,15 @@ public class UserManagementController {
 		obj.put("success", _provider.updateUser(UserId, user));
 		return obj;
 	}
+	
+	@GetMapping(value = "/UserManagement/CurrentUser", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	public @ResponseBody Map<String, Object> CurrentUser(){
+		HashMap<String, Object> obj = new HashMap<>();
+		obj.put("success", true);
+		obj.put("content", new SessionHelper().getCurrentUser());
+		return obj;
+	}
+	
+	
 
 }

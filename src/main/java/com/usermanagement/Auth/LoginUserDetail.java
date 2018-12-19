@@ -16,6 +16,10 @@ public class LoginUserDetail implements UserDetails {
 		this.user = user;
 	}
 	
+	public User getLoginUser() {
+		return this.user;
+	}
+	
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		// TODO Auto-generated method stub
@@ -57,5 +61,4 @@ public class LoginUserDetail implements UserDetails {
 		// TODO Auto-generated method stub
 		return false;
 	}
-
 }
