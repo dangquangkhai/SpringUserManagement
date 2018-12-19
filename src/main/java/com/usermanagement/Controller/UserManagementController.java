@@ -25,6 +25,9 @@ public class UserManagementController {
 
 	@Autowired
 	UserProvider _provider = new UserProvider();
+	
+	@Autowired
+	SessionHelper helper = new SessionHelper();
 
 	@RequestMapping(value = "/UserManagement/Index", method = RequestMethod.GET)
 	public String Index() {
@@ -98,7 +101,7 @@ public class UserManagementController {
 	public @ResponseBody Map<String, Object> CurrentUser(){
 		HashMap<String, Object> obj = new HashMap<>();
 		obj.put("success", true);
-		obj.put("content", new SessionHelper().getCurrentUser());
+		obj.put("content", helper.getCurrentUser());
 		return obj;
 	}
 	

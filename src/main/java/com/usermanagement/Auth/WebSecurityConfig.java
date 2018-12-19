@@ -33,10 +33,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	public AuthenticationManager authenticationManagerBean() throws Exception {
 		return super.authenticationManagerBean();
 	}
-	/*
-	 * @Bean public AuthenticationManager customAuthenticationManager() throws
-	 * Exception { return authenticationManager(); }
-	 */
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
@@ -45,7 +41,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				.antMatchers("/", "/home", "/Content/**", "/Scripts/**", "/App/**", "/resources/**", "/Account/**",
 						"/Account/Login")
 				.permitAll().anyRequest().authenticated().and().formLogin().loginPage("/Account/Index").permitAll()
-				.and().logout().logoutUrl("/Account/Logout").logoutSuccessUrl("/Account/Index").permitAll().and().exceptionHandling().accessDeniedPage("/Access_Denied");;
+				.and().logout()/*.logoutUrl("/Account/Logout").logoutSuccessUrl("/Account/Index")*/.permitAll().and().exceptionHandling().accessDeniedPage("/Access_Denied");;
 	}
 
 	@Override
@@ -53,20 +49,5 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		web.ignoring().antMatchers(HttpMethod.POST, "/Account/Login");
 	}
 
-//	  @Bean
-//	  public UserDetailsService userDetailsService() {
-//	    return new UserLoginService();
-//	  };
-//    @Bean
-//    @Override
-//    public AccountUserDetailService userDetailsService() {
-//        UserDetails user =
-//             User.withDefaultPasswordEncoder()
-//                .username("user")
-//                .password("password")
-//                .roles("USER")
-//                .build();
-//
-//        return new InMemoryUserDetailsManager(user);
-//    }
+
 }
